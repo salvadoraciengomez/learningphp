@@ -2,7 +2,9 @@
 
     namespace Bookstore\Domain;
 
-    class Customer extends Person{
+    abstract class Customer extends Person{
+        //asbstract obliga a implementar en sus herederos cada método abstract y no puede instanciar objetos
+        //abstract se utiliza para asegurarse de que sus hijos estén correctamente implementados
         private static $lastId = 0;
 
         private $id;
@@ -28,6 +30,11 @@
             $this -> surname = $surname;
             $this -> email = $email;
         }
+
+        //Tienen que definirse en las clases hijas:
+        public abstract function getMonthlyFee();
+        public abstract function getAmountToBorrow();
+        public abstract function getType();
         
         public static function getLastId():int{
             return self::$lastId;

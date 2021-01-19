@@ -55,5 +55,15 @@
     $customer2 = new Basic(7, 'James', 'Bond', 'jamesbopnd@gmail.com');
     //var_dump(checkIfValid($customer2, [$book1]));  No encontraría checkIfValid porque getAmountToBorrow() no está en Customer
 
+
+    //Uso de traits
+    $basic1 = new Basic (1,"name","surname","email");
+    $basic2 = new Basic (null,"name","surname","email");
+
+    var_dump($basic1->getId());
+    var_dump($basic2->getId());
+
+
+
     
 ?>

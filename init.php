@@ -5,6 +5,7 @@
     use Bookstore\Domain\Customer;
     use Bookstore\Domain\Customer\Basic;
     use Bookstore\Domain\Customer\Premium;
+    //FACTORY-NEITHERWORKINGuse Bookstore\Domain\Customer\CustomerFactory;
     //NOT WORKINGuse Bookstore\Exceptions\InvalidException;
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
     //use Library\Domain\Book as LibraryBook; new LibraryBook();
@@ -97,4 +98,8 @@
     createBasicCustomer(-1);
     createBasicCustomer(55);
     
+
+    ////NEITHER WORKING////Factory
+    //CustomerFactory::factory('basic',2,'mary','poppins','mary@mail.com');
+    //CustomerFactory::factory('premium',null,'james','bond','james@mail.com');
 ?>

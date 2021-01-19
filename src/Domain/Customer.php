@@ -2,9 +2,23 @@
 
     namespace Bookstore\Domain;
 
-    abstract class Customer extends Person{
-        //asbstract obliga a implementar en sus herederos cada método abstract y no puede instanciar objetos
+    interface Customer extends Payer {
+    //Interfaces solo pueden heredar de otras interfaces
+
+        //Los métodos de interfaces deben ser public a la fuerza
+        public function getMonthlyFee(): float;
+        public function getAmountToBorrow(): int;
+        public function getType(): string;
+
+
+//**Código anterior, cuando Customer fue una abstract class 
+        
+        //asbstract obliga a implementar en sus herederos cada método abstract y no puede instanciar objetos 
+        //(puede definir métodos aunque los hijos deban sobreescribirlos)
         //abstract se utiliza para asegurarse de que sus hijos estén correctamente implementados
+        
+        /*Código anterior
+        abstract class Customer extends Person{
         private static $lastId = 0;
 
         private $id;
@@ -61,6 +75,6 @@
         }
 
 
-
+*///Código anterior
     }    
 ?>

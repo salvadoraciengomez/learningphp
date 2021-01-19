@@ -1,6 +1,9 @@
 <?php
     namespace Bookstore\Utils;
-    //NOT WORKINGnamespace Bookstore\Exceptions;
+    
+    //NOT WORKING
+    //namespace Bookstore\Exceptions;
+    //use InvalidException;
 
     
 

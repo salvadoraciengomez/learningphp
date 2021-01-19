@@ -5,6 +5,7 @@
     use Bookstore\Domain\Customer;
     use Bookstore\Domain\Customer\Basic;
     use Bookstore\Domain\Customer\Premium;
+    //NOT WORKINGuse Bookstore\Exceptions\InvalidException;
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
     //use Library\Domain\Book as LibraryBook; new LibraryBook();
 

@@ -26,7 +26,10 @@
                     self::$lastId = $id;
                 }
             }
-            
+            //NOTWORKING
+            //if ($this->id >50){
+            //    throw new ExceededMaxAllowedException('Max number of users is 50');
+            //}
         }
 
         public static function getLastId(): int{

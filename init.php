@@ -76,10 +76,15 @@
         }
     */
 
-    function createBasicCustomer($id){
+    function createBasicCustomer(int $id){
         try{
             echo "\nTrying to create a new customer. \n";
             return new Basic($id,"name","surname","email");
+        //NOTWORKING
+        //catch (InvalidException $e){
+        //echo "You cannot provide a negative id";
+        //}catch(ExceededMaxAllowedException $e){
+        //echo "No more customer are allowed";
         }catch (Exception $e){
             echo "Something happened when creating the basic customer: "
             .$e->getMessage()."\n";
@@ -90,5 +95,6 @@
 
     createBasicCustomer(1);
     createBasicCustomer(-1);
+    createBasicCustomer(55);
     
 ?>

@@ -64,6 +64,30 @@
     var_dump($basic2->getId());
 
 
+    //Uso de try local, Excepcion definida en el trait Unique (setId()). 
+    //Si se usa try se debe seguir del uso de catch o finally, pudiendo usar ambos
+    //catch maneja la excepcion, ejecuta al haber error
+    //Finally se ejecuta cuando el try se hace bien o tras hacer el catch
+    /*try{
+        $basic = new Basic (-1, "name", "surname","email");
+    } catch (Exception $e) {
+        echo 'Something wrong using constructor:'. $e->getMessage();
+        }
+    */
 
+    function createBasicCustomer($id){
+        try{
+            echo "\nTrying to create a new customer. \n";
+            return new Basic($id,"name","surname","email");
+        }catch (Exception $e){
+            echo "Something happened when creating the basic customer: "
+            .$e->getMessage()."\n";
+        }finally{
+            echo "End of function.\n";
+        }
+    }
+
+    createBasicCustomer(1);
+    createBasicCustomer(-1);
     
 ?>

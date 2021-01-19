@@ -2,16 +2,19 @@
 
     namespace Bookstore\Domain;
 
-    class Customer{
+    class Customer extends Person{
         private static $lastId = 0;
 
         private $id;
-        private $name;
-        private $surname;
+        //private $name; hereda de Person (protected)
+        //private $surname; hereda de Person (protected)
         private $email;
 
         public function __construct( int $id=null, string $name, string $surname, string $email){
 
+            parent::__construct($name, $surname);//Llama al constructor padre
+            //Si se sobreescribe (override) un método heredado, se puede hacer referencia parent::metodo()
+            //El método overrided debe tener visibilidad igual o más amplia
             if ($id == null){
                 $this->id = ++self::$lastId; //self:: es como this, pero para clase (static)
             }else{

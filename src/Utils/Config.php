@@ -26,6 +26,7 @@
                 throw new NotFoundException("Key $key not in config.");
             }
             return $this->data[$key];
+
         }
     }
 ?>

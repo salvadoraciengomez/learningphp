@@ -175,6 +175,7 @@ SQL;
     echo $db-> lastInsertId();
 
 
+    //Función añadir libro, por defecto añade 1 (parametro opcional)
     function addBook(int $id, int $amount =1):void{
         $db = new PDO(
             'mysql:host=127.0.0.1;dbname=bookstore',
@@ -188,6 +189,35 @@ SQL;
 
         if(!$statement->execute()){
             throw new Exception($statement->errorInfo()[2]);
+        }
+    }
+
+    //Transacciones SGBD (beginTransaction, commits, rollbacks)
+    function addSale(int $userId, array $bookIds):void{
+        $db = new PDO(
+            'mysql:host=127.0.0.1;dbname=bookstore',
+            'root',
+            ''
+        );
+        $db->beginTransaction();
+        try{
+            $query = 'INSERT INTO sale (customer_id, date) ' 
+                . 'VALUES(:id, NOW())';
+            $statement= $db->prepare($query);
+            if(!$statement->execute(['id' => $userId])){
+                throw new Exception($statement->errorInfo()[2]);
+            }
+            $saleId = $db->lastInsertId();
+            $query = 'INSERT INTO sale_book (book_id, sale_id) VALUES(:book, :sale)';
+            $statement= $db->prepare($query);
+            $statement->bindValue('sale', $saleId);
+            foreach ($bookIds as $bookId){
+                if(!$statement->execute()) throw new Exception($statement->errorInfo()[2]);
+            }
+            $db->commit();
+        }catch (Exception $e){
+            $db->rollBack();
+            throw $e;
         }
     }
 ?>

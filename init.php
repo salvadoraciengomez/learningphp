@@ -145,4 +145,33 @@ SQL;
     $error= $db->errorInfo()[2];
     var_dump($error);
 
+
+    //Consultas dinámicas
+    $query= 'SELECT * FROM book WHERE author = :author';
+    $statement= $db->prepare($query);
+    //El segundo param de bindValue se le asignará al prefijo :author de la $query
+    $statement->bindValue('author', 'George Orwell');
+    
+    $statement->execute();
+    $rows = $statement->fetchAll();
+    var_dump($rows);
+
+    //Consultas mediante array asociativo
+    $query= <<<SQL
+    INSERT INTO book (isbn, title, author, price)
+    VALUES (:isbn, :title, :author, :price)
+SQL;
+    $statement= $db->prepare($query);
+    $params= [
+        'isbn' => '9781412108614',
+        'title' => 'Iliad',
+        'author' => 'Homer',
+        'price' => 9.25
+    ];
+
+    $statement->execute($params);
+    
+    //Devuelve el ultimo primarykey
+    echo $db-> lastInsertId();
+
 ?>

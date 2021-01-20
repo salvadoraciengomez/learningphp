@@ -3,6 +3,8 @@
 
     namespace Bookstore\Utils;
 
+    use Bookstore\Exceptions\NotFoundException;
+
     class Config{
         private $data;
 
@@ -11,9 +13,9 @@
             $this -> data = json_decode($json, true);
         }
 
-        public function get($key){
+        public function get(string $key){
             if(!isset($this->data[$key])){
-                //FALLA throw new NotFoundException("Key $key not in config.");
+                throw new NotFoundException("Key $key not in config.");
             }
             return $this->data[$key];
         }

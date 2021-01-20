@@ -6,7 +6,7 @@
     use Bookstore\Domain\Customer\Basic;
     use Bookstore\Domain\Customer\Premium;
     use Bookstore\Domain\Customer\CustomerFactory;
-    //NOT WORKINGuse Bookstore\Exceptions\InvalidException;
+
     
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
     //use Library\Domain\Book as LibraryBook; new LibraryBook();
@@ -36,7 +36,7 @@
 
     $book1->available = 2;
     //echo $customer1->id;  Can't access private
-    echo((string) $customer2->getId()); //using public getter to access private attrib (encapsulamiento)
+    //echo((string) $customer2->getId()); //using public getter to access private attrib (encapsulamiento)
 
     $customer1 = new Basic(3, 'John', 'Doe', 'johndoe@mail.com');
     $customer2 = new Basic(null, 'Mary', 'Poppins', 'mp@mail.com');
@@ -53,7 +53,7 @@
 
     //Habría que añadir use Bookstore\Domain\Customer\Basic;
     $customer1 = new Basic (5, 'John', 'Doe', 'jophndoe@mail.vom');
-    var_dump(checkIfValid($customer1,[$book1])); //true
+    //var_dump(checkIfValid($customer1,[$book1])); //true
 
     $customer2 = new Basic(7, 'James', 'Bond', 'jamesbopnd@gmail.com');
     //var_dump(checkIfValid($customer2, [$book1]));  No encontraría checkIfValid porque getAmountToBorrow() no está en Customer
@@ -63,8 +63,8 @@
     $basic1 = new Basic (1,"name","surname","email");
     $basic2 = new Basic (null,"name","surname","email");
 
-    var_dump($basic1->getId());
-    var_dump($basic2->getId());
+    //var_dump($basic1->getId());
+    //var_dump($basic2->getId());
 
 
     //Uso de try local, Excepcion definida en el trait Unique (setId()). 
@@ -102,14 +102,14 @@
     createBasicCustomer(55);
     */
 
-    //Factory
+    //Factory (constructores dinámicos)
     CustomerFactory::factory('basic',2,'mary','poppins','mary@mail.com');
     CustomerFactory::factory('premium',null,'james','bond','james@mail.com');
 
 
     //Singleton
     //FALLA al hacer el autoload porque no coge el nombre completo del archivo, sino una posición posterior a la de inicio "onfig.php"
-    // $config = new Config();
-    // $dbConfig = $config->get('db');
-    // var_dump($dbConfig);
+    $config = new Config();
+    $dbConfig = $config->get('db');
+    var_dump($dbConfig);
 ?>

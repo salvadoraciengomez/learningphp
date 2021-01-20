@@ -174,4 +174,20 @@ SQL;
     //Devuelve el ultimo primarykey
     echo $db-> lastInsertId();
 
+
+    function addBook(int $id, int $amount =1):void{
+        $db = new PDO(
+            'mysql:host=127.0.0.1;dbname=bookstore',
+            'root',
+            ''
+        );
+        $query= 'UPDATE book SET stock = stock + :n WHERE id = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue('id', $id);
+        $statement->bindValue('n', $amount);
+
+        if(!$statement->execute()){
+            throw new Exception($statement->errorInfo()[2]);
+        }
+    }
 ?>

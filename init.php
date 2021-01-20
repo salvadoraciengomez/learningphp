@@ -215,6 +215,7 @@ SQL;
             $statement->bindValue('sale', $saleId);
             
             foreach ($bookIds as $bookId){
+                $statement->bindValue('book', $bookId);
                 if(!$statement->execute()) throw new Exception($statement->errorInfo()[2]);
                 }
             

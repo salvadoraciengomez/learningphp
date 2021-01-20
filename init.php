@@ -8,6 +8,7 @@
     use Bookstore\Domain\Customer\CustomerFactory;
     use Bookstore\Utils\Config;
 
+
     
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
     //use Library\Domain\Book as LibraryBook; new LibraryBook();
@@ -109,8 +110,8 @@
 
 
     //Singleton
-    //FALLA al hacer el autoload porque no coge el nombre completo del archivo, sino una posición posterior a la de inicio "onfig.php"
-    $config = new Config();
+    //FALLA al no reconocer la $key db null?
+    $config = Config::getInstance();
     $dbConfig = $config->get('db');
     var_dump($dbConfig);
 ?>

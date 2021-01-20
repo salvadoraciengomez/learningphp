@@ -6,6 +6,7 @@
     use Bookstore\Domain\Customer\Basic;
     use Bookstore\Domain\Customer\Premium;
     use Bookstore\Domain\Customer\CustomerFactory;
+    use Bookstore\Utils\Config;
 
     
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:

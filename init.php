@@ -14,7 +14,8 @@
     //Importaría todas las clases que haya en ./src 
     //Siguiente función era originalmente __autoload, cambia a autoloader para hacer uso de spl_autoload_register
     function autoloader($classname){ //__autoload Deprecated in PHP8 por spl_autoload_register()
-        $lastSlash = strpos($classname,'\\')+1;
+        //$lastSlash = strpos($classname,'\\')+1;
+        $lastSlash = strpos($classname,'\\');
         $classname= substr($classname,$lastSlash);
         $directory = str_replace('\\', '/', $classname);
         $filename = __DIR__ . '/src/' . $directory . '.php';
@@ -102,4 +103,12 @@
     ////NEITHER WORKING////Factory
     //CustomerFactory::factory('basic',2,'mary','poppins','mary@mail.com');
     //CustomerFactory::factory('premium',null,'james','bond','james@mail.com');
+
+
+    //Singleton
+    //FALLA al hacer el autoload porque no coge el nombre completo del archivo, sino una posición posterior a la de inicio "onfig.php"
+    
+    $config = new Config();
+    $dbConfig = $config->get('db');
+    var_dump($dbConfig);
 ?>

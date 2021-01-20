@@ -2,8 +2,10 @@
     namespace Bookstore\Utils;
     
     //NOT WORKING
-    //namespace Bookstore\Exceptions;
-    //use InvalidException;
+    use Bookstore\Exceptions\ExceededMaxAllowedException;
+    use Bookstore\Exceptions\InvalidException;
+
+
 
     
 
@@ -15,8 +17,8 @@
         public function setId(int $id=null){
 
             if ($id < 0){
-                throw new \Exception('Id cannot be negative'); //Necesita 'use Exception;' si no se utiliza el backslash
-                //NOTWORKINGthrow new InvalidException('Id cannot be negative');
+                //throw new \Exception('Id cannot be negative'); //Necesita 'use Exception;' si no se utiliza el backslash
+                throw new InvalidException('Id cannot be negative');
             }
             if (empty($id)){
                 $this->id= ++self::$lastId;
@@ -26,10 +28,10 @@
                     self::$lastId = $id;
                 }
             }
-            //NOTWORKING
-            //if ($this->id >50){
-            //    throw new ExceededMaxAllowedException('Max number of users is 50');
-            //}
+            
+            if ($this->id >50){
+                throw new ExceededMaxAllowedException('Max number of users is 50');
+            }
         }
 
         public static function getLastId(): int{

@@ -7,6 +7,7 @@
     use Bookstore\Domain\Customer\Premium;
     //FACTORY-NEITHERWORKINGuse Bookstore\Domain\Customer\CustomerFactory;
     //NOT WORKINGuse Bookstore\Exceptions\InvalidException;
+    
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
     //use Library\Domain\Book as LibraryBook; new LibraryBook();
 
@@ -14,8 +15,7 @@
     //Importaría todas las clases que haya en ./src 
     //Siguiente función era originalmente __autoload, cambia a autoloader para hacer uso de spl_autoload_register
     function autoloader($classname){ //__autoload Deprecated in PHP8 por spl_autoload_register()
-        //$lastSlash = strpos($classname,'\\')+1;
-        $lastSlash = strpos($classname,'\\');
+        $lastSlash = strpos($classname,'\\')+1;
         $classname= substr($classname,$lastSlash);
         $directory = str_replace('\\', '/', $classname);
         $filename = __DIR__ . '/src/' . $directory . '.php';
@@ -83,10 +83,10 @@
             echo "\nTrying to create a new customer. \n";
             return new Basic($id,"name","surname","email");
         //NOTWORKING
-        //catch (InvalidException $e){
-        //echo "You cannot provide a negative id";
-        //}catch(ExceededMaxAllowedException $e){
-        //echo "No more customer are allowed";
+        }catch (InvalidException $e){
+            echo "You cannot provide a negative id";
+        }catch(ExceededMaxAllowedException $e){
+            echo "No more customer are allowed";
         }catch (Exception $e){
             echo "Something happened when creating the basic customer: "
             .$e->getMessage()."\n";

@@ -201,23 +201,46 @@ SQL;
         );
         $db->beginTransaction();
         try{
-            $query = 'INSERT INTO sale (customer_id, date) ' 
-                . 'VALUES(:id, NOW())';
+            $query = 'INSERT INTO sale (customer_id, date) VALUES(:id, NOW())';
             $statement= $db->prepare($query);
+
             if(!$statement->execute(['id' => $userId])){
                 throw new Exception($statement->errorInfo()[2]);
-            }
+                }
+
             $saleId = $db->lastInsertId();
             $query = 'INSERT INTO sale_book (book_id, sale_id) VALUES(:book, :sale)';
+            
             $statement= $db->prepare($query);
             $statement->bindValue('sale', $saleId);
+            
             foreach ($bookIds as $bookId){
                 if(!$statement->execute()) throw new Exception($statement->errorInfo()[2]);
-            }
+                }
+            
             $db->commit();
+
         }catch (Exception $e){
+
             $db->rollBack();
             throw $e;
         }
+    }
+
+
+
+    // Prueba de Inserción usando la funciín addSale que incluye rollBack y Commit 
+
+    //primer try debe fallar, pues no existe el libro id 200
+    try {
+        addSale(1, [1, 2, 200]);
+    } catch (Exception $e) {
+        echo 'Error adding sale: ' . $e->getMessage();
+    }
+
+    try{
+        addSale(1,[1,2,3]);
+    }catch (Exception $e){
+        echo 'Error adding sale: '.$e->getMessage();
     }
 ?>

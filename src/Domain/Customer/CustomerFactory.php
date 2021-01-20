@@ -1,10 +1,12 @@
 <?php
     namespace Bookstore\Domain\Customer;
 
+    use Bookstore\Domain\Customer;
+
     class CustomerFactory{
         public static function factory(
             string $type,
-            int $id,
+            int $id=null,
             string $name,
             string $surname,
             string $email

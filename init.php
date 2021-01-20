@@ -5,7 +5,7 @@
     use Bookstore\Domain\Customer;
     use Bookstore\Domain\Customer\Basic;
     use Bookstore\Domain\Customer\Premium;
-    //FACTORY-NEITHERWORKINGuse Bookstore\Domain\Customer\CustomerFactory;
+    use Bookstore\Domain\Customer\CustomerFactory;
     //NOT WORKINGuse Bookstore\Exceptions\InvalidException;
     
     //Para usar otra clase con el nombre Book se debería especificar un alias en el use:
@@ -78,18 +78,20 @@
         }
     */
 
+
+    /** CUSTOMIZED EXCEPTIONS
     function createBasicCustomer(int $id){
         try{
-            echo "\nTrying to create a new customer. \n";
+            echo "\nTrying to create a new customer with id $id. \n";
             return new Basic($id,"name","surname","email");
         //NOTWORKING
-        }catch (InvalidException $e){
+        }catch (Exception $e){
+            echo 'Unknown Exception:'.$e->getMessage()."\n";
+        }
+        catch (InvalidException $e){
             echo "You cannot provide a negative id";
         }catch(ExceededMaxAllowedException $e){
             echo "No more customer are allowed";
-        }catch (Exception $e){
-            echo "Something happened when creating the basic customer: "
-            .$e->getMessage()."\n";
         }finally{
             echo "End of function.\n";
         }
@@ -98,11 +100,11 @@
     createBasicCustomer(1);
     createBasicCustomer(-1);
     createBasicCustomer(55);
-    
+    */
 
-    ////NEITHER WORKING////Factory
-    //CustomerFactory::factory('basic',2,'mary','poppins','mary@mail.com');
-    //CustomerFactory::factory('premium',null,'james','bond','james@mail.com');
+    //Factory
+    CustomerFactory::factory('basic',2,'mary','poppins','mary@mail.com');
+    CustomerFactory::factory('premium',null,'james','bond','james@mail.com');
 
 
     //Singleton

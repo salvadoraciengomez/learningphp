@@ -110,8 +110,39 @@
 
 
     //Singleton
-    //FALLA al no reconocer la $key db null?
+    /** 
     $config = Config::getInstance();
     $dbConfig = $config->get('db');
     var_dump($dbConfig);
+    */
+
+
+
+    //Uso de PhpDataObject (Previa inicialización de BD bookstore)
+    $dbConfig = Config::getInstance()->get('db');
+    $db= new PDO(
+        'mysql:host=127.0.0.1;dbname=bookstore',
+        $dbConfig['user'],
+        $dbConfig['password']
+    );
+    //Formateando la salida del motor de SGBD
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    //Array asociativo con resultado del query
+    $rows = $db->query('SELECT * FROM book ORDER BY title');
+    foreach ($rows as $row) var_dump($row);
+
+    $query= <<<SQL
+    INSERT INTO book (isbn, title, author, price)
+    VALUES ("9788187981954", "Peter Pan", "J. M. Barrie", 2.34)
+SQL;
+    
+    //Exec devuelve un booleano según si ha podido realizar la ejecución
+    $result = $db->exec($query);
+    //al intentar ejecutar el script por 2ª vez el var_dump dará false, porque ya existe
+    var_dump($result);
+
+    $error= $db->errorInfo()[2];
+    var_dump($error);
+
 ?>

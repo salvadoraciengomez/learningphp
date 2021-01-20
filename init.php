@@ -107,8 +107,7 @@
 
     //Singleton
     //FALLA al hacer el autoload porque no coge el nombre completo del archivo, sino una posición posterior a la de inicio "onfig.php"
-    
-    $config = new Config();
-    $dbConfig = $config->get('db');
-    var_dump($dbConfig);
+    // $config = new Config();
+    // $dbConfig = $config->get('db');
+    // var_dump($dbConfig);
 ?>

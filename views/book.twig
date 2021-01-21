@@ -1,0 +1,21 @@
+<h2>{{book.title}}</h2>
+<h2>{{book.author}}</h2>
+
+
+<hr>
+
+<p><strong>ISBN</strong>{{book.isbn}}</p>
+<p><strong>Stock</strong>{{book.stock}}</p>
+<p><strong>ISBN</strong>{{book.price|number_format(2)}}</p>
+
+<hr>
+
+<h3>Actions</h3>
+
+<form method="post" action="/book/{{book.id}}/borrow">
+    <input type="submit" value="Borrow">
+</form>
+
+<form method="post" action="/book/{{book.id}}/buy">
+    <input type="submit" value="Buy">
+</form>

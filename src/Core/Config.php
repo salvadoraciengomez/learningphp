@@ -1,7 +1,7 @@
 <?php
     //Singleton --> mantiene una única instancia, usado para recursos pesados como conexión a BD o archivos de configuración
 
-    namespace Bookstore\Utils;
+    namespace Bookstore\Core;
 
     use Bookstore\Exceptions\NotFoundException;
 

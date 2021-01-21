@@ -66,5 +66,43 @@ SQL;
 
             return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
         }
+
+        public function borrow(Book $book, int $userId){
+            $query=<<<SQL
+                INSERT INTO borrowed_books (book_id, customer_id, start)
+                VALUES (:book, :user, NOW())
+SQL;
+            $sth= $this->db->prepare($query);
+            $sth->bindValue('book', $book->getId());
+            $sth->bindValue('user', $userId);
+
+            if(!$sth->execute()) throw new DbException($sth->errorInfo()[2]);
+
+            $this->updateBookStock($book);
+        }
+
+        public function returnBook(Book $book, int $userId){
+            $query= <<<SQL
+                UPDATE borrowed_books SET end = NOW()
+                WHERE book_id= :book AND customer_id= :user AND end IS NULL
+SQL;
+            $sth= $this->db->prepare($query);
+            $sth->bindValue('book', $book->getId());
+            $sth->bindValue('user', $userId);
+
+            if (!$sth->execute()) throw new DbException($sth->errorInfo()[2]);
+
+            $this->updateBookStock($book);
+        }
+
+        private function updateBookStock(Book $book){
+            $query = 'UPDATE book SET stock = :stock WHERE id= :id';
+            $sth= $this->db->prepare($query);
+            $sth->bindValue('stock', $book->getId());
+            $sth->bindValue('stock', $book->getStock());
+
+            if(!$sth->execute()) throw new DbException($sth->errorInfo()[2]);
+        }
+        
     }
 ?>

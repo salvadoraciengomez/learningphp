@@ -2,5 +2,11 @@
     "require": {
         "monolog/monolog": "^2.2",
         "twig/twig": "^3.2"
+    },
+    "autoload":
+    {
+        "psr-4": {
+            "Bookstore\\":"src"
+        }
     }
 }

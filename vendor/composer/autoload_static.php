@@ -7,8 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -28,6 +28,10 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'B' => 
+        array (
+            'Bookstore\\' => 10,
         ),
     );
 
@@ -51,6 +55,10 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Bookstore\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

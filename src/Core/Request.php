@@ -10,10 +10,15 @@
         private $path;
         private $method;
 
+        private $params;
+        private $cookies;
+
         public function __construct(){
             $this->domain = $_SERVER['HTTP_HOST'];
             $this->path = $_SERVER['REQUEST_URI'];
             $this->method= $_SERVER['REQUEST_METHOD'];
+            $this->params = new FilteredMap(array_merge($_POST, $_GET));
+            $this->cookies = new FilteredMap($_COOKIE);
         }
 
         public function getUrl(): string{
@@ -39,5 +44,15 @@
         public function isGet(): bool{
             return $this->method === self::GET;
         }
+
+        public function getParams(): FilteredMap{
+            return $this->params;
+        }
+
+        public function getCookies(): FilteredMap{
+            return $this->cookies;
+        }
+        //Se podría hacer $price=$request->getParams()->getNumber('price'); 
+        //más seguro que $price= $_POST['price];
     }
 ?>

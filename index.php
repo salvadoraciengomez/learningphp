@@ -17,7 +17,7 @@
     $bookModel = new BookModel(Db::getInstance());
     //var_dump($bookModel->get(1));
     //$book = $bookModel->get(1);
-    $book = $bookModel->getAll(1,3);
+    $books = $bookModel->getAll(1,3);
 
     $params = ['books'=> $books, 'currentPage' => 2];
     echo $twig->loadTemplate('books.twig')->render($params);

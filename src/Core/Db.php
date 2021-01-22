@@ -22,6 +22,7 @@
             if (self::$instance == null) {
                 //echo "NULLDB";
                 self::$instance = self::connect();
+                //var_dump(is_null(self::$instance));
             }
             return self::$instance;
         }

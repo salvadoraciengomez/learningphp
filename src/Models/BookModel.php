@@ -33,7 +33,7 @@
             $start = $pageLength * ($page -1);
 
             $query = 'SELECT * FROM book LIMIT :page, :length';
-            $sth = $this->db->prepare($query);
+            $sth = parent::getDb()->prepare($query);
             $sth->bindParam('page', $start, PDO::PARAM_INT);
             $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
             $sth->execute();

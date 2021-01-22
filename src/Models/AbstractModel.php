@@ -4,7 +4,7 @@
     use PDO;
 
     abstract class AbstractModel{
-        protected $db;
+        private $db;
 
         public function __construct(PDO $db){
             $this->db = $db;

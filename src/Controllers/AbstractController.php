@@ -34,5 +34,9 @@
         public function setCustomerId(int $customerId){
             $this->customerId= $customerId;
         }
+
+        protected function render(string $template, array $params): string{
+            return $this->view->loadTemplate($template)->render($params);
+        }
     }
 ?>

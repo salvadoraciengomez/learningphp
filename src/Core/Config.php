@@ -21,7 +21,7 @@
             return self::$instance;
         }
         public function get(string $key){
-            var_dump($this->data);
+            //var_dump($this->data);
             if(!isset($this->data[$key])){
                 throw new NotFoundException("Key $key not in config.");
             }

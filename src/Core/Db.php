@@ -19,7 +19,10 @@
         }
 
         public static function getInstance(){
-            if (self::$instance == null) self::$instance = self::connect();
+            if (self::$instance == null) {
+                //echo "NULLDB";
+                self::$instance = self::connect();
+            }
             return self::$instance;
         }
     }

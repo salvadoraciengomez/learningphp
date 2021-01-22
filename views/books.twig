@@ -19,4 +19,10 @@
     </tr>
     {% endfor %}
 </table>
+{% if currentPage != 1 %}
+    <a href="/books/{{ currentPage -1 }}">Previous</a>
+{% endif %}
+{% if not lastPage %}
+    <a href="/books/{{ currentPage + 1 }}">Next</a>
+{% endif %}
 {% endblock %}

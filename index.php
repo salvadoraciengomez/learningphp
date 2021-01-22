@@ -6,12 +6,13 @@
     use Bookstore\Utils\Config;
     use Bookstore\Core\Db;
 
-    //OLD TWIG INSTNC
-    //$loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
-    //$twig = new Twig_Environment($loader);
+    
+    $loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
+    $twig = new Twig_Environment($loader);
 
-    $loader= new Twig\Loader\FilesystemLoader(__DIR__.'/views');
-    $twig = new \Twig\Environment($loader);
+    //PostPRECATED
+    // $loader= new Twig\Loader\FilesystemLoader(__DIR__.'/views');
+    // $twig = new \Twig\Environment($loader);
     
     $bookModel = new BookModel(Db::getInstance());
     //var_dump($bookModel->get(1));

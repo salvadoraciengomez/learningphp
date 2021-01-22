@@ -1,7 +1,11 @@
 <?php
-    //var_dump(__DIR__);
+    use Bookstore\Core\Router;
+    use Bookstore\Core\Request;
+    
     require_once __DIR__ . '/vendor/autoload.php';
 
+
+/**    CODE FOR TESTING VIEWS
     use Bookstore\Models\BookModel;
     use Bookstore\Models\SaleModel;
     use Bookstore\Utils\Config;
@@ -15,6 +19,8 @@
     // $loader= new Twig\Loader\FilesystemLoader(__DIR__.'/views');
     // $twig = new \Twig\Environment($loader);
     
+
+
     $bookModel = new BookModel(Db::getInstance());
     //var_dump($bookModel->get(1));
     //$book = $bookModel->get(1);
@@ -35,3 +41,10 @@
 
     $params= ['sale' => $sale];
     echo $twig->loadTemplate('sale.twig')->render($params);
+    */
+
+    $router = new Router();
+    $response = $router->route(new Request());
+    echo $response;
+
+?>

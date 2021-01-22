@@ -15,7 +15,7 @@
             $query = 'SELECT * FROM book WHERE id= :id';
             //$sth= $this->db->prepare($query);
             //$sth= $this->$db->prepare($query);
-            $sth= parent::$db->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             $sth->execute(['id' => $bookId]);
 
             $books= $sth->fetchAll(

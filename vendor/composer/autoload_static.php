@@ -8,7 +8,6 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -18,7 +17,6 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
         'P' => 
@@ -40,10 +38,6 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
@@ -62,6 +56,16 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -71,6 +75,7 @@ class ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitc8d5e453d3f712321b08a0ab3ba0fee8::$classMap;
 
         }, null, ClassLoader::class);

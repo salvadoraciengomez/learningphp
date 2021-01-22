@@ -29,20 +29,11 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'c4c2f9f2164e32740cb814f709e9f413873aeff3',
-    'name' => '__root__',
+    'reference' => '59a2d0127852ccfbc0215a2c212de4e64eca5ff9',
+    'name' => 'picahielos/bookstore',
   ),
   'versions' => 
   array (
-    '__root__' => 
-    array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'c4c2f9f2164e32740cb814f709e9f413873aeff3',
-    ),
     'monolog/monolog' => 
     array (
       'pretty_version' => '2.2.0',
@@ -51,6 +42,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+    ),
+    'picahielos/bookstore' => 
+    array (
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '59a2d0127852ccfbc0215a2c212de4e64eca5ff9',
     ),
     'psr/log' => 
     array (
@@ -77,23 +77,14 @@ private static $installed = array (
       ),
       'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
     ),
-    'symfony/polyfill-mbstring' => 
-    array (
-      'pretty_version' => 'v1.22.0',
-      'version' => '1.22.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'f377a3dd1fde44d37b9831d68dc8dea3ffd28e13',
-    ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v3.2.1',
-      'version' => '3.2.1.0',
+      'pretty_version' => 'v1.44.2',
+      'version' => '1.44.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f795ca686d38530045859b0350b5352f7d63447d',
+      'reference' => '138c493c5b8ee7cff3821f80b8896d371366b5fe',
     ),
   ),
 );

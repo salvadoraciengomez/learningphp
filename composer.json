@@ -10,13 +10,13 @@
             "email": "antonio.lopez.zapata@gmail.com"
         }
     ],
-    "require": {
-        "monolog/monolog": "^1.17",
-        "twig/twig": "^1.23"
-    },
     "autoload": {
         "psr-4": {
             "Bookstore\\": "src"
         }
+    },
+    "require": {
+        "monolog/monolog": "^2.2",
+        "twig/twig": "^1.23"
     }
 }

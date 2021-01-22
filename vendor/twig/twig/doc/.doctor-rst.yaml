@@ -38,17 +38,18 @@ rules:
     yarn_dev_option_at_the_end: ~
 
     versionadded_directive_major_version:
-        major_version: 3
+        major_version: 1
 
     versionadded_directive_min_version:
-        min_version: '3.0'
+        min_version: '1.0'
 
     deprecated_directive_major_version:
-        major_version: 3
+        major_version: 1
 
     deprecated_directive_min_version:
-        min_version: '3.0'
+        min_version: '1.0'
 
 whitelist:
     lines:
+        - '``C:\\php-sdk\\phpdev\\vcXX\\x86\\php-source-directory\\Release``'
         - 'I like Twig.<br />'

@@ -11,7 +11,7 @@
 
         public function getByUser(int $userId): array{
             $query= 'SELECT * FROM sale WHERE s.customer_id= :user';
-            $sth=$this->db->prepare($query);
+            $sth=parent::getDb()->prepare($query);
             $sth->execute(['user'=> $userId]);
 
             return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
@@ -19,7 +19,7 @@
 
         public function get(int $saleId): Sale{
             $query= 'SELECT * FROM sale WHERE id= :id';
-            $sth = $this->db->prepare($query);
+            $sth = parent::getDb()->prepare($query);
             $sth->execute(['id'=> $saleId]);
             $sales= $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
 
@@ -34,7 +34,7 @@
                 LEFT JOIN book b ON sb.book_id = b.id 
                 WHERE s.id = :id 
 SQL;
-            $sth= $this->db->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             $sth->execute(['id' => $saleId]);
             $books = $sth->fetchAll(
                 PDO::FETCH_CLASS, BookModel::CLASSNAME
@@ -47,34 +47,34 @@ SQL;
 
         public function create(Sale $sale){
             //Uso de transacciones
-            $this->db->beginTransaction();
+            parent::getDb()->beginTransaction();
 
             $query = <<<SQL
                 INSERT INTO sale (customer_id, date)
                 VALUES (:id, NOW())
 SQL;
-            $sth= $this->db->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             if(!$sth->execute(['id'=> $sale->getCustomerId()])){
-                $this->db->rollBack();
+                parent::getDb()->rollBack();
                 throw new DbException($sth->errorInfo()[2]);
             }
-            $saleId= $this->db->lastInsertId();
+            $saleId= parent::getDb()->lastInsertId();
             $query= <<<SQL
                 INSERT INTO sale_book(sale_id, book_id, amount)
                 VALUES (:sale, :book, :amount)
 SQL;
-            $sth= $this->db->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             $sth->bindValue('sale', $saleId);
             foreach ($sale->getBooks() as $bookId => $amount){
                 $sth->bindValue('book', $bookId);
                 $sth->bindValue('amount', $amount);
 
                 if(!$sth->execute()){
-                    $this->db->rollBack();
+                    parent::getDb()->rollBack();
                     throw new DbException($sth->errorInfo()[2]);
                 }
             }
-            $this->db->commit();
+            parent::getDb()->commit();
         }
     }
 ?>

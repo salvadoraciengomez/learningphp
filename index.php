@@ -3,6 +3,7 @@
     require_once __DIR__ . '/vendor/autoload.php';
 
     use Bookstore\Models\BookModel;
+    use Bookstore\Models\SaleModel;
     use Bookstore\Utils\Config;
     use Bookstore\Core\Db;
 

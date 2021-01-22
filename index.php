@@ -21,3 +21,16 @@
 
     $params = ['books'=> $books, 'currentPage' => 2];
     echo $twig->loadTemplate('books.twig')->render($params);
+
+    //Prepare to sale.twig
+    $saleModel = new SaleModel(Db::getInstance());
+    $sales = $saleModel->getByUser(1);
+
+    $params = ['sales' => $sales];
+    echo $twig->loadTemplate('sales.twig')->render($params);
+
+    $saleModel = new SaleModel(Db::getInstance());
+    $sale = $saleModel->get(1);
+
+    $params= ['sale' => $sale];
+    echo $twig->loadTemplate('sale.twig')->render($params);

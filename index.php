@@ -31,7 +31,7 @@
     echo $twig->loadTemplate('sales.twig')->render($params);
 
     $saleModel = new SaleModel(Db::getInstance());
-    $sale = $saleModel->get(1);
+    $sale = $saleModel->get(5);
 
     $params= ['sale' => $sale];
     echo $twig->loadTemplate('sale.twig')->render($params);

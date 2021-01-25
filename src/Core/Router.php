@@ -23,9 +23,11 @@
         public function route(Request $request,DependencyInjector $di): string{
             //coge un objeto Request y devuelve una cadena que recibirá el cliente. Comprueba todas las rutas hasta encontrar la propia y enviarla al controlador
             $path = $request->getPath();
+            $path=explode('/', $path)[4];
+            var_dump($path);
             foreach ($this->routeMap as $route => $info){
                 $regexRoute = $this->getRegexRoute($route, $info);
-                //var_dump($info);
+                //var_dump($regexRoute);
                 if (preg_match("@^/$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
 

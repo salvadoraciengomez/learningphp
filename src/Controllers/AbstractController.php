@@ -28,6 +28,10 @@
             $this->config = $di->get('Utils\Config');
 
             //$this->setCustomerId = $_COOKIE['id'];
+            //$this->setCustomerId= $_SERVER['HTTP_COOKIE'];
+            $this->customerId = $_COOKIE['id'] ?? null;
+
+
         }
         
         public function setCustomerId(int $customerId){

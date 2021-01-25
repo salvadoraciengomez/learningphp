@@ -17,7 +17,7 @@
             $this->domain = $_SERVER['HTTP_HOST'];
             $this->path = $_SERVER['REQUEST_URI'];
             $this->method= $_SERVER['REQUEST_METHOD'];
-            $this->params = new FilteredMap(array_merge($_POST, $_GET));
+            $this->params = new FilteredMap(array_merge($_POST, $_GET)); //Uso de la clase FilteredMap para evitar coger directamente $_POST o $_COOKIE (sec)
             $this->cookies = new FilteredMap($_COOKIE);
         }
 

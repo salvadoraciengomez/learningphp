@@ -3,6 +3,7 @@
 
     use Bookstore\Controllers\ErrorController;
     use Bookstore\Controllers\CustomerController;
+    use Bookstore\Controllers\Customer;
 
     class Router{
         private $routeMap;
@@ -22,6 +23,7 @@
             $path = $request->getPath();
             foreach ($this->routeMap as $route => $info){
                 $regexRoute = $this->getRegexRoute($route, $info);
+                var_dump($info);
                 if (preg_match("@^/$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
 

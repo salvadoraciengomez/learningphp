@@ -27,6 +27,7 @@
         public function getString(string $name, bool $filter=true){
             $value= (string) $this->get($name);
             return $filter ? addslashes($value) : $value;
+            // addSlashes (sec) previene de inyecciones
         }
     }
 ?>

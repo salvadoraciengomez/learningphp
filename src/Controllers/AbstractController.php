@@ -24,10 +24,10 @@
             $this->di = $di;
             $this->db = $di->get('PDO');
             $this->log = $di->get('Logger');
-            $this->view = $di->get('Twig_environment');
+            $this->view = $di->get('Twig_Environment');
             $this->config = $di->get('Utils\Config');
 
-            $this->setCustomerId = $_COOKIE['id'];
+            //$this->setCustomerId = $_COOKIE['id'];
         }
         
         public function setCustomerId(int $customerId){

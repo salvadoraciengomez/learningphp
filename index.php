@@ -1,6 +1,10 @@
 <?php
     use Bookstore\Core\Router;
     use Bookstore\Core\Request;
+    use Bookstore\Core\Config;
+    use Monolog\Logger;
+    use Monolog\Handler\StreamHandler;
+    use Bookstore\Utils\DependencyInjector;
     
     require_once __DIR__ . '/vendor/autoload.php';
 
@@ -54,8 +58,7 @@
         $dbConfig['user'],
         $dbConfig['password']
     );
-
-    $loader = new Twig_Loader_Filesystem(__DIR__.'/../../views');
+    $loader = new Twig_Loader_Filesystem(__DIR__.'/views');
     $view = new Twig_Environment($loader);
 
     $log = new Logger('bookstore');
@@ -69,8 +72,8 @@
     $di->set('Logger', $log);
 
 
-    $router = new Router();
-    $response = $router->route(new Request());
+    $router = new Router($di);
+    $response = $router->route(new Request(), $di);
     echo $response;
 
 ?>

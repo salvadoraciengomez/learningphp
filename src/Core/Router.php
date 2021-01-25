@@ -15,11 +15,12 @@
 
         public function __construct(DependencyInjector $di){
             //Al crear Router se lee el routes.json para comprobar si corresponde a algún controlador el objeto Request enviado al método route()
+            $this->di= $di;
             $json = file_get_contents( __DIR__ . '/../../config/routes.json');
             $this->routeMap= json_decode($json, true);
         }
 
-        public function route(Request $request): string{
+        public function route(Request $request,DependencyInjector $di): string{
             //coge un objeto Request y devuelve una cadena que recibirá el cliente. Comprueba todas las rutas hasta encontrar la propia y enviarla al controlador
             $path = $request->getPath();
             foreach ($this->routeMap as $route => $info){
@@ -45,7 +46,7 @@
                     );
                 }
             }
-            $errorController = new ErrorController($request);
+            $errorController = new ErrorController($this->di,$request);
             //Si ninguna de las rutas se adapta al Request envía el error
             return $errorController->notFound();
         }
@@ -102,14 +103,14 @@
             Request $request
         ): string{
             $controllerName= '\Bookstore\Controllers\\'.$info['controller'].'Controller';
-            $controller= new $controllerName($request);
+            $controller= new $controllerName($this->di,$request);
 
             if(isset($info['login']) && $info['login']){
                 if($request->getCookies()->has('user')){
                     $customerId= $request->getCookies()->get('user');
                     $controller->setCustomerId($customerId);
                 }else{
-                $errorController= new CustomerController($request);
+                $errorController= new CustomerController($this->di,$request);
                 //Si el usuario no tiene una cookie se ejecuta el método login
                 return $errorController->login();
                 }

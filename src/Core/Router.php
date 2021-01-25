@@ -23,7 +23,7 @@
             $path = $request->getPath();
             foreach ($this->routeMap as $route => $info){
                 $regexRoute = $this->getRegexRoute($route, $info);
-                var_dump($info);
+                //var_dump($info);
                 if (preg_match("@^/$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
 
@@ -114,7 +114,7 @@
                 }
             }
             $params = $this->extractParams($route, $path);
-            return \call_user_func_array([$controller, $info['method']],$params);
+            return call_user_func_array([$controller, $info['method']],$params);
         }
         
     }

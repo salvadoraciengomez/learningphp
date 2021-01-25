@@ -4,6 +4,7 @@
     use Bookstore\Controllers\ErrorController;
     use Bookstore\Controllers\CustomerController;
     use Bookstore\Controllers\Customer;
+    use Bookstore\Utils\DependencyInjector;
 
     class Router{
         private $routeMap;
@@ -12,7 +13,7 @@
             'string' => '\w'
         ];
 
-        public function __construct(){
+        public function __construct(DependencyInjector $di){
             //Al crear Router se lee el routes.json para comprobar si corresponde a algún controlador el objeto Request enviado al método route()
             $json = file_get_contents( __DIR__ . '/../../config/routes.json');
             $this->routeMap= json_decode($json, true);

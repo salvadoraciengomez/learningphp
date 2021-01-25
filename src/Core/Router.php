@@ -24,12 +24,19 @@
             //coge un objeto Request y devuelve una cadena que recibirá el cliente. Comprueba todas las rutas hasta encontrar la propia y enviarla al controlador
             $path = $request->getPath();
             $path=explode('/', $path)[4];
-            var_dump($path);
+            //var_dump($path);
+            $i=0;
             foreach ($this->routeMap as $route => $info){
                 $regexRoute = $this->getRegexRoute($route, $info);
                 //var_dump($regexRoute);
+                var_dump($i);
+                var_dump($regexRoute);
+                var_dump($path);
+                echo "<br>";
+                $i++;
                 if (preg_match("@^/$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
+                    
 
                     //EXPRESIONES:
                     // ^ Especifica que la parte a encontrar debe estar al principio de la cadena
@@ -43,6 +50,7 @@
                     // .* matchs anything, even empty string
                     // .+ matchs anything that contains at least one character
                     // ^\d+$ matchs any number that has at least one digit
+                    echo "$path MATCHED";
                     return $this->executeController(
                         $route, $path, $info, $request
                     );

@@ -29,11 +29,11 @@
             foreach ($this->routeMap as $route => $info){
                 $regexRoute = $this->getRegexRoute($route, $info);
                 //var_dump($regexRoute);
-                var_dump($i);
-                var_dump($regexRoute);
-                var_dump($path);
-                echo "<br>";
-                $i++;
+                //var_dump($i);
+                //var_dump($regexRoute);
+                //var_dump($path);
+                //echo "<br>";
+                //$i++;
                 if (preg_match("@$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
                     
@@ -50,7 +50,7 @@
                     // .* matchs anything, even empty string
                     // .+ matchs anything that contains at least one character
                     // ^\d+$ matchs any number that has at least one digit
-                    echo "$path MATCHED";
+                    //echo "$path MATCHED";
                     return $this->executeController(
                         $route, $path, $info, $request
                     );

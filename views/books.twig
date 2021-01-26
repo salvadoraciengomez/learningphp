@@ -15,14 +15,14 @@
     <tr>
         <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
-        <td><a href="/book/{{ book.id }}"View</a></td>
+        <td><a href="{{ruta}}/book/{{ book.id }}"View</a></td>
     </tr>
     {% endfor %}
 </table>
 {% if currentPage != 1 %}
-    <a href="/books/{{ currentPage -1 }}">Previous</a>
+    <a href="{{ruta}}/books/{{ currentPage -1 }}">Previous</a>
 {% endif %}
 {% if not lastPage %}
-    <a href="/books/{{ currentPage + 1 }}">Next</a>
+    <a href="{{ruta}}/books/{{ currentPage + 1 }}">Next</a>
 {% endif %}
 {% endblock %}

@@ -20,11 +20,11 @@
 
     <h3>Actions</h3>
 
-    <form method="post" action="/dual/LearningPHP/Chap4-OOP/book/{{book.id}}/borrow">
+    <form method="post" action="/{{ruta}}/book/{{book.id}}/borrow">
         <input type="submit" value="Borrow">
     </form>
 
-    <form method="post" action="/dual/LearningPHP/Chap4-OOP/book/{{book.id}}/buy">
+    <form method="post" action="/{{ruta}}/book/{{book.id}}/buy">
         <input type="submit" value="Buy">
     </form>
 {% endblock %}

@@ -5,7 +5,6 @@
 
     class BookController extends AbstractController{
         const PAGE_LENGTH = 10;
-        //$ruta= parent::getPath();
 
         public function getAllWithPage($page): string{
             $page = (int)$page;
@@ -35,9 +34,9 @@
                 $properties = ['errorMessage'=> 'Book not found!'];
                 return $this->render('error.twig', $properties);
             }
-
+            $ruta= $this->request->getPath();
             $properties = ['book' => $book];
-            return $this->render('book.twig', $properties);
+            return $this->render('book.twig', $properties, $ruta);
         }
 
         public function getByUser(): string{
@@ -49,8 +48,9 @@
                 'currentPage' => 1,
                 'lastPage' => true
             ];
+            $ruta= $this->request->getPath();
 
-            return $this->render('books.twig', $properties);
+            return $this->render('books.twig', $properties, $ruta);
         }
 
         public function search():string{
@@ -65,8 +65,8 @@
                 'currentPage' => 1,
                 'lastPage' => true
             ];
-
-            return $this->render('books.twig', $properties);
+            $ruta= $this->request->getPath();
+            return $this->render('books.twig', $properties, $ruta);
         }
     }
 ?>

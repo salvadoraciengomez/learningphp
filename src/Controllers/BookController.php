@@ -17,6 +17,8 @@
                 'currentPage' => $page,
                 'lastPage' => count($books) < self::PAGE_LENGTH
             ];
+            $ruta= $this->request->getPath();
+            $properties=['ruta'=> $ruta];
             return $this->render('books.twig', $properties);
         }
 
@@ -36,7 +38,8 @@
             }
             $ruta= $this->request->getPath();
             $properties = ['book' => $book];
-            return $this->render('book.twig', $properties, $ruta);
+            $properties=['ruta'=> $ruta];
+            return $this->render('book.twig', $properties);
         }
 
         public function getByUser(): string{
@@ -49,8 +52,8 @@
                 'lastPage' => true
             ];
             $ruta= $this->request->getPath();
-
-            return $this->render('books.twig', $properties, $ruta);
+            $properties=['ruta'=> $ruta];
+            return $this->render('books.twig', $properties);
         }
 
         public function search():string{
@@ -66,7 +69,8 @@
                 'lastPage' => true
             ];
             $ruta= $this->request->getPath();
-            return $this->render('books.twig', $properties, $ruta);
+            $properties=['ruta'=> $ruta];
+            return $this->render('books.twig', $properties);
         }
     }
 ?>

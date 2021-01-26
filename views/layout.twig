@@ -6,11 +6,11 @@
 </head>
 <body>
     <div style="border:solid 1px">
-        <a href="/books">Books</a>
-        <a href="/sales">My sales</a>
-        <a href="/my-books">My Books</a>
+        <a href="{{properties.ruta}}/books">Books</a>
+        <a href="{{properties.ruta}}/sales">My sales</a>
+        <a href="{{properties.ruta}}/my-books">My Books</a>
         <hr>
-        <form action="/books/search" method="get">
+        <form action="{{properties.ruta}}/books/search" method="get">
             <lablel>Title</label>
             <input type="text" name="title">
             <label>Author</label>

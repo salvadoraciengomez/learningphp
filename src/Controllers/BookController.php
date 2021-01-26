@@ -5,6 +5,7 @@
 
     class BookController extends AbstractController{
         const PAGE_LENGTH = 10;
+        //$ruta= parent::getPath();
 
         public function getAllWithPage($page): string{
             $page = (int)$page;

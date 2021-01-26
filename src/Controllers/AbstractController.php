@@ -41,5 +41,9 @@
         protected function render(string $template, array $params): string{
             return $this->view->loadTemplate($template)->render($params);
         }
+
+        public function getPath(){
+            return $this->request->getPath();
+        }
     }
 ?>

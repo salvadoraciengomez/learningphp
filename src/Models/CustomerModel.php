@@ -29,7 +29,7 @@
         public function getByEmail(string $email):Customer{
             //Devuelve Customer por 'email'
             $query= 'SELECT * FROM customer WHERE email= :user';
-            $sth = $this->db->prepare($query);
+            $sth = parent::getDb()->prepare($query);
             $sth->execute(['user' => $email]);
 
             $row = $sth->fetch();

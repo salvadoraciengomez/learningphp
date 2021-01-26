@@ -34,7 +34,7 @@
                 var_dump($path);
                 echo "<br>";
                 $i++;
-                if (preg_match("@^/$regexRoute@",$path)){
+                if (preg_match("@$regexRoute@",$path)){
                     //comprueba la expresión (1er arg) sobre $path. Devuelve false si no encuentra
                     
 

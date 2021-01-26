@@ -20,7 +20,7 @@
             return CustomerFactory::factory(
                 $row['type'],
                 $row['id'],
-                $row['name'],
+                $row['firstname'],
                 $row['surname'],
                 $row['email']
             );
@@ -39,7 +39,7 @@
             return CustomerFactory::factory(
                 $row['type'],
                 $row['id'],
-                $row['name'],
+                $row['firstname'],
                 $row['surname'],
                 $row['email']
             );

@@ -27,7 +27,7 @@
         }
 
         public function getByUser(): string{
-            $salesModel = new SalesModel($this->db);
+            $salesModel = new SaleModel($this->db);
 
             $sales = $salesModel->getByUser($this->$customerId);
 
@@ -36,7 +36,7 @@
         }
 
         public function get($saleId): string{
-            $salesModel = new SalesModel($this->db);
+            $salesModel = new SaleModel($this->db);
 
             $sale= $salesModel->get($saleId);
             $properties = ['sale' => $sale];

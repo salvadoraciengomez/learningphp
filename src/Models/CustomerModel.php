@@ -10,7 +10,7 @@
         public function get (int $userId):Customer{
             //Devuelve customer por ID mediante la consulta o lanza excepción
             $query = 'SELECT * FROM customer WHERE customer_id = :user';
-            $sth= $this->db->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             $sth->execute(['user'=>$userId]);
 
             $row = $sth->fetch();

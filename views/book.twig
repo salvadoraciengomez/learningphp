@@ -4,6 +4,11 @@
     {{ book.title }}
 {% endblock %}
 
+{% block rutasurl}
+    {% set lit="'" %}
+    <a href={{ lit ~ ruta ~ lit }}>Sample</a>
+{% endblock %}
+
 {% block content %}
     <h2>{{ book.title }}</h2>
     <h2>{{book.author}}</h2>

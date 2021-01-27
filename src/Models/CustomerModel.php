@@ -31,10 +31,10 @@
             //Devuelve Customer por 'email'
             $query= 'SELECT * FROM customer WHERE email= :user';
             $sth = parent::getDb();
-            $sth->prepare($query);
-            $sth->execute(['user' => $email]);
+            $sth2=$sth->prepare($query);
+            $sth2->execute(['user' => $email]);
 
-            $row = $sth->fetch();
+            $row = $sth2->fetch();
 
             if (empty($row)) throw new NotFoundException;
 

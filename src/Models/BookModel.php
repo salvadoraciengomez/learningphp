@@ -34,13 +34,13 @@
             $start = $pageLength * ($page -1);
 
             $query = 'SELECT * FROM book LIMIT :page, :length';
-            $sth = parent::getDb();
-            $sth->prepare($query);
-            $sth->bindParam('page', $start, PDO::PARAM_INT);
-            $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
-            $sth->execute();
+            $PDObject = parent::getDb();
+            $aPDOStatement=$PDObject->prepare($query);
+            $aPDOStatement->bindParam('page', $start, PDO::PARAM_INT);
+            $aPDOStatement->bindParam('length', $pageLength, PDO::PARAM_INT);
+            $aPDOStatement->execute();
 
-            return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
+            return $aPDOStatement->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
         }
 
         public function getByUser(int $userId): array{

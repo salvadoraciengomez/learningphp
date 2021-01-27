@@ -74,7 +74,7 @@ SQL;
                 INSERT INTO borrowed_books (book_id, customer_id, start)
                 VALUES (:book, :user, NOW())
 SQL;
-            $sth= parent::getDb->prepare($query);
+            $sth= parent::getDb()->prepare($query);
             $sth->bindValue('book', $book->getId());
             $sth->bindValue('user', $userId);
 

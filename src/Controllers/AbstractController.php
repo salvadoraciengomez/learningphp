@@ -33,6 +33,10 @@
 
 
         }
+
+        public function getDb(){
+            return $this->db;
+        }
         
         public function setCustomerId(int $customerId){
             $this->customerId= $customerId;

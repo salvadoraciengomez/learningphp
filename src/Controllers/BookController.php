@@ -8,7 +8,7 @@
 
         public function getAllWithPage($page): string{
             $page = (int)$page;
-            $bookModel = new BookModel($this->db);
+            $bookModel = new BookModel(parent::getDb());
 
             $books = $bookModel->getAll($page, self::PAGE_LENGTH);
 

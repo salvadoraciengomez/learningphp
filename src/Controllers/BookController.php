@@ -27,13 +27,14 @@
         }
 
         public function get(int $bookId): string{
-            $bookModel = new BookModel($this->db);
+            //$bookModel = new BookModel($this->db);
+            $bookModel = new BookModel(parent::getDb());
 
             try{
                 $book = $bookModel->get($bookId);
             }catch(\Exception $e){
                 $this->log->error('Error getting book: '.$e->getMessage());
-                $properties = ['errorMessage'=> 'Book not found!'];
+                $properties = ['errorMessage'=> "Book $bookId not found!"];
                 return $this->render('error.twig', $properties);
             }
             $ruta= $this->request->getPath();

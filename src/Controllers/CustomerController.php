@@ -6,7 +6,7 @@
 
     class CustomerController extends AbstractController{
 
-        public function login(): string {
+        public function login(string $email=null): string {
             if (!$this->request->isPost()) return $this->render('login.twig', []);
 
             $params = $this->request->getParams();

@@ -15,7 +15,8 @@
             $query = 'SELECT * FROM book WHERE id= :id';
             //$sth= $this->db->prepare($query);
             //$sth= $this->$db->prepare($query);
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->execute(['id' => $bookId]);
 
             $books= $sth->fetchAll(
@@ -33,7 +34,8 @@
             $start = $pageLength * ($page -1);
 
             $query = 'SELECT * FROM book LIMIT :page, :length';
-            $sth = parent::getDb()->prepare($query);
+            $sth = parent::getDb();
+            $sth->prepare($query);
             $sth->bindParam('page', $start, PDO::PARAM_INT);
             $sth->bindParam('length', $pageLength, PDO::PARAM_INT);
             $sth->execute();
@@ -48,7 +50,8 @@
                 FROM borrowed_books bb LEFT JOIN book b ON bb.book_id= b.id
                 WHERE bb.customer_id= :idate
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->execute(['id'=> $userId]);
 
             return $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
@@ -61,7 +64,8 @@ SQL;
                 SELECT * FRFOM book
                 WHERE title LIKE :title AND author LIKE :author
 SQL;
-            $sth = parent::getDdb()->prepare($query);
+            $sth = parent::getDdb();
+            $sth->prepare($query);
             $sth->bindValue('title', "%$title%");
             $sth->bindValue('author', "%$author%");
             $sth->execute();
@@ -74,7 +78,8 @@ SQL;
                 INSERT INTO borrowed_books (book_id, customer_id, start)
                 VALUES (:book, :user, NOW())
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->bindValue('book', $book->getId());
             $sth->bindValue('user', $userId);
 
@@ -88,7 +93,8 @@ SQL;
                 UPDATE borrowed_books SET end = NOW()
                 WHERE book_id= :book AND customer_id= :user AND end IS NULL
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->bindValue('book', $book->getId());
             $sth->bindValue('user', $userId);
 
@@ -99,7 +105,8 @@ SQL;
 
         private function updateBookStock(Book $book){
             $query = 'UPDATE book SET stock = :stock WHERE id= :id';
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->bindValue('stock', $book->getId());
             $sth->bindValue('stock', $book->getStock());
 

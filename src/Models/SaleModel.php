@@ -19,7 +19,8 @@
 
         public function get(int $saleId): Sale{
             $query= 'SELECT * FROM sale WHERE id= :id';
-            $sth = parent::getDb()->prepare($query);
+            $sth = parent::getDb();
+            $sth->prepare($query);
             $sth->execute(['id'=> $saleId]);
             $sales= $sth->fetchAll(PDO::FETCH_CLASS, self::CLASSNAME);
 
@@ -34,7 +35,8 @@
                 LEFT JOIN book b ON sb.book_id = b.id 
                 WHERE s.id = :id 
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->execute(['id' => $saleId]);
             $books = $sth->fetchAll(
                 PDO::FETCH_CLASS, BookModel::CLASSNAME
@@ -53,17 +55,20 @@ SQL;
                 INSERT INTO sale (customer_id, date)
                 VALUES (:id, NOW())
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             if(!$sth->execute(['id'=> $sale->getCustomerId()])){
                 parent::getDb()->rollBack();
                 throw new DbException($sth->errorInfo()[2]);
             }
-            $saleId= parent::getDb()->lastInsertId();
+            $saleId= parent::getDb();
+            $saleId->lastInsertId();
             $query= <<<SQL
                 INSERT INTO sale_book(sale_id, book_id, amount)
                 VALUES (:sale, :book, :amount)
 SQL;
-            $sth= parent::getDb()->prepare($query);
+            $sth= parent::getDb();
+            $sth->prepare($query);
             $sth->bindValue('sale', $saleId);
             foreach ($sale->getBooks() as $bookId => $amount){
                 $sth->bindValue('book', $bookId);

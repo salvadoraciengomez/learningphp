@@ -8,6 +8,7 @@
 
     class Router{
         private $routeMap;
+        private $di;
         private static $regexPatters=[
             'number' => '\d+',
             'string' => '\w'

@@ -6,6 +6,11 @@
 
     class BasicTest extends PHPUnit_Framework_TestCase{
         
+        // public function setUp(){
+
+        //     $this->customer = new Basic (1,'han','solo','han@solo.com');
+        // }
+        
         public function testAmountToBorrow(){ //Los métodos que empiezan por "test" son los que ejecuta PHPUnit
             
             $customer = new Basic (1, 'han', 'solo', 'han@solo.com');
@@ -36,6 +41,7 @@
 //public function thisIsATestToo(){}
 //Convierte nombres de métodos que no empiecen por test en funciones de comprobación PHPUnit
 
-//Para ejecutar test se hace uso del binario ./vendor/bin/phpunit
+//Para ejecutar test se hace uso del binario ./vendor/bin/phpunit desde el directorio raíz
+//Falla la ejecución de test unitarios (XDebug enabled?)
 
 ?>

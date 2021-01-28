@@ -6,10 +6,14 @@
 
     class BasicTest extends PHPUnit_Framework_TestCase{
         
-        // public function setUp(){
+        public function setUp(){
+            //Establecimiento de prueba de uso con contexto generalizado (se ejecuta cada vez que inicia el test, como las funciones test)
+            //Cuando testAmountToBorrow se ejecuta, la variable customer se encontrará inicializada porque previamente hace el setUp
+            //Se vuelve a ejecutar setUp() para cada test
+            //Se puede hacer uso del método tearDown() que se ejecutará al final del método testX()
 
-        //     $this->customer = new Basic (1,'han','solo','han@solo.com');
-        // }
+            $this->customer = new Basic (1,'han','solo','han@solo.com');
+        }
         
         public function testAmountToBorrow(){ //Los métodos que empiezan por "test" son los que ejecuta PHPUnit
             

@@ -5,6 +5,8 @@
     use PHPUnit_Framework_TestCase;
 
     class BasicTest extends PHPUnit_Framework_TestCase{
+
+        private $customer;
         
         public function setUp(){
             //Establecimiento de prueba de uso con contexto generalizado (se ejecuta cada vez que inicia el test, como las funciones test)
@@ -36,6 +38,15 @@
                 $customer= testAmountToBorrow(),
                 'Basic customer should borrow up to 3 books.'
             );
+        }
+
+        public function testIsExemptOfTaxes(){
+            //Se asegura de que un basicCustomer nuca esté exento de tasas, se podría hacer con assertSame isExemptOfTaxes(),false
+                $this->assertFalse(
+                    isExemptOfTaxes(),
+                    false,
+                    'Basic customer should be exempt of taxes'
+                );
         }
     }
 

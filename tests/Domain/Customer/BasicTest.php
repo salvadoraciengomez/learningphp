@@ -21,7 +21,7 @@
             
             $customer = new Basic (1, 'han', 'solo', 'han@solo.com');
             
-            //Para comprueba los dos primeros parámetros
+            //Para comprueba los dos primeros parámetros si son iguales
             $this->assertSame(
                 3,
                 $customer->getAmountToBorrow(),

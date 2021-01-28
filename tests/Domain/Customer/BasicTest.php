@@ -48,6 +48,14 @@
                     'Basic customer should be exempt of taxes'
                 );
         }
+
+        public function testGetMonthlyFee(){
+            $this->assertSame(
+                5,
+                $this->customer->testGetMonthlyFee(),
+                'Basic customer should pay 5 a month.'
+            );
+        }
     }
 
 /**

@@ -17,6 +17,17 @@
                 'Basic customer should borrow up to 3 books.'//Lo muestra en caso de fallo
             );
         }
+
+        public function testFail(){
+
+            $customer = new Basic (1,'han','solo','han@solo.com');
+
+            $this->assertSame(
+                4,
+                $customer= testAmountToBorrow(),
+                'Basic customer should borrow up to 3 books.'
+            );
+        }
     }
 
 /**
@@ -24,5 +35,7 @@
  */
 //public function thisIsATestToo(){}
 //Convierte nombres de métodos que no empiecen por test en funciones de comprobación PHPUnit
+
+//Para ejecutar test se hace uso del binario ./vendor/bin/phpunit
 
 ?>

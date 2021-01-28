@@ -15,7 +15,7 @@
                 //comprueba si pertenece a una clase
                 Basic::class,
                 $customer,
-                'basic should create a Customer\Basic object'.
+                'basic should create a Customer\Basic object'
             );
         }
     }

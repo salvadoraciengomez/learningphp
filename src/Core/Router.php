@@ -24,7 +24,7 @@
         public function route(Request $request,DependencyInjector $di): string{
             //coge un objeto Request y devuelve una cadena que recibirá el cliente. Comprueba todas las rutas hasta encontrar la propia y enviarla al controlador
             $path = $request->getPath();
-            $path=explode('/', $path)[4];
+            $path=explode('/', $path)[3];
             //var_dump($path);
             $i=0;
             foreach ($this->routeMap as $route => $info){

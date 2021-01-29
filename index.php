@@ -78,4 +78,6 @@
     $response = $router->route(new Request(), $di);
     echo $response;
 
+    //Simple test
+
 ?>
